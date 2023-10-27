@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  IMAGE_URL: ${{ vars.TENGXUNYUN }}/${{ vars.NAMESPACE }}/${{ vars.IMAGES }}
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # 登录
+    - name: Login docker
+      run: |
+       echo "${{ secrets.TENCENTYUN }}" | docker login --username ${{ secrets.USERNAME }} ${{ vars.TENGXUNYUN }} --password-stdin
+
+    - name: Build the Docker image
+      run: docker build . --file ./docker/Dockerfile --tag ${{ env.IMAGE_URL }}:${{ github.sha }}
+    
+    # Push the Docker image to TKE Registry
+    - name: Push docker image
+      run: |
+        docker push ${{ env.IMAGE_URL }}:${{ github.sha }}

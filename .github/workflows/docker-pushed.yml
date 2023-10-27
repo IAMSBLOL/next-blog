@@ -1,0 +1,14 @@
+name: Server Auto UpdateImages
+
+on:
+  workflow_run:
+    workflows: Docker Image CI
+    types: completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login docker
+        run: docker images -a
