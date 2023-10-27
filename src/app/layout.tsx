@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import StyledJsxRegistry from '@/src/lib/registry';
 import StyledComponentsRegistry from '@/src/lib/AntdRegistry';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
