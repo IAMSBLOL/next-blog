@@ -2,7 +2,7 @@ import { access, constants, readdir } from 'node:fs'
 import { resolve } from 'node:path'
 import { promisify } from 'node:util'
 
-const blogFolder = 'app/mdx/[slug]/'
+const blogFolder = 'src/app/mdx/[slug]/'
 
 export async function getMarkdowns () {
   try {
