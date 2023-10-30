@@ -6,9 +6,11 @@ const HomePage = async () => {
   const files = await getMarkdowns()
   return (
 
-    <div className="App container m-auto">
+    <div className='App container m-auto'>
       <Button
-        type="primary">Button</Button>
+        type='primary'
+      >Button
+      </Button>
       {
         files
       }
