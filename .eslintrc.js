@@ -1,6 +1,7 @@
 module.exports = {
   extends: [
     'standard',
+    'standard-jsx',
     'standard-react',
     'plugin:@typescript-eslint/recommended',
     'next/core-web-vitals',

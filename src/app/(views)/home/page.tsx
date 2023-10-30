@@ -68,7 +68,7 @@ const NotFound = (): JSX.Element => {
     }
   }, [])
   return (
-    <div >
+    <div>
       <div className='NotFound_wrap'>
         {
           useMemo(() => <canvas ref={canvasIns} className='canvas' />, [])

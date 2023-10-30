@@ -210,8 +210,8 @@ const Skill = (): JSX.Element => {
     };
   }, []);
   return (
-    <div ref={canvasWrap} className="Skill">
-      <canvas ref={canvasIns} className="canvas" />
+    <div ref={canvasWrap} className='Skill'>
+      <canvas ref={canvasIns} className='canvas' />
       <style jsx>
         {`
         .Skill {

@@ -9,7 +9,8 @@
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build",
     "prepare": "husky install",
-    "image": "node ./docker/docker.mjs"
+    "image": "node ./docker/docker.mjs",
+    "style": "npx stylelint **/*.{css,scss} --fix"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.2",
@@ -17,6 +18,8 @@
     "@mdx-js/react": "^2.3.0",
     "@next/bundle-analyzer": "^13.5.6",
     "@next/mdx": "^13.5.5",
+    "@react-three/drei": "^9.88.7",
+    "@react-three/fiber": "^8.15.8",
     "@types/mdx": "^2.0.8",
     "antd": "^5.10.2",
     "cross-env": "^7.0.3",
@@ -33,27 +36,32 @@
     "remark-gfm": "3.0.1",
     "remark-toc": "^9.0.0",
     "shiki": "^0.14.5",
-    "three": "^0.157.0",
+    "three": "^0.158.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/three": "^0.157.0",
+    "@types/three": "^0.158.0",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "^14.0.0",
     "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-jsx": "^11.0.0",
     "eslint-config-standard-react": "^13.0.0",
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
     "next-compose-plugins": "^2.2.1",
     "postcss": "^8",
+    "prettier": "^3.0.3",
     "sass": "^1.69.4",
     "shelljs": "^0.8.5",
+    "stylelint": "^15.11.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-prettier": "^4.0.2",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
