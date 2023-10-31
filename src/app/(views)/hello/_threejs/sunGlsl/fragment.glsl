@@ -1,31 +1,45 @@
-uniform sampler2D sunTextrue;
-uniform float time;
-varying vec2 vUv;
+
+
+// Uniforms
+uniform float uTime;
+uniform sampler2D uTexture; 
+
+// Varyings
+varying vec2 vTexCoord;
+
+// Parameters
+#define NUM_GLOW 3
+#define GLOW_POWER 1.5
+
+float rand(vec2 co){
+  return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+
 
 void main() {
-    vec4 color = texture2D(sunTextrue, vUv);
-    vec4 glow = vec4(0.0);
+  // Texture coordinate
+  vec2 texCoord = vTexCoord;
 
-  // 根据需要调整辉光的亮度和颜色
-    vec3 glowColor = vec3(1.0, 1.0, 0.0); // 辉光颜色为黄色
-    float glowIntensity = 0.5; // 辉光强度
+  // Distance to center 
+  vec2 center = vec2(0.5,0.5);
+  float dist = distance(texCoord, center);
 
-  // 计算辉光
-    vec2 resolution = vec2(800.0, 600.0); // 屏幕分辨率
-    float glowRadius = time; // 辉光半径
+  // Glow layers
+  float brightness = 0.0;
+  for(int i=0; i<NUM_GLOW; i++) {
+    float glow = 1.0/(pow(dist,GLOW_POWER)*float(i+1));
+    float angle = float(i) * uTime;
+    glow = glow * cos(angle)*0.5 + 0.5;
+    brightness += glow;
+  }
 
-    vec2 uv = gl_FragCoord.xy / resolution;
-    vec2 delta = vec2(1.0 / resolution.x, 1.0 / resolution.y);
+  // Color & texture
+  vec3 color = texture(uTexture, texCoord).rgb;
+  color = mix(vec3(1.0), color, brightness);
 
-    for(int i = -5; i <= 5; i++) {
-        for(int j = -5; j <= 5; j++) {
-            vec2 offset = vec2(float(i), float(j)) * glowRadius;
-            glow += texture2D(sunTextrue, uv + offset * delta);
-        }
-    }
+  // Noise
+  color += vec3(rand(texCoord * uTime));
 
-    glow /= 121.0; // 计算平均辉光值
-    glow *= glowIntensity * vec4(glowColor, 1.0);
-
-    gl_FragColor = color + glow;
+  // Output
+  gl_FragColor = vec4(color,1.0);
 }

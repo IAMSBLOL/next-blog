@@ -20,23 +20,23 @@ const SetCnavs = () => {
 }
 
 const MeshCus = () => {
-  const colorMap = useTexture('http://localhost:3000/sun.png')
+  const colorMap = useTexture('./sun.png')
 
   const uniforms = useRef({
-    time: { value: 0.0 },
+    uTime: { value: 0.0 },
     amplitude: { value: 0.5 },
     intensity: { value: 2.0 },
-    sunTextrue: { value: colorMap },
+    uTexture: { value: colorMap },
     glowIntensity: { value: 0.5 }, // 辉光强度
   })
   useFrame(() => {
-    uniforms.current.time.value += 0.01
+    uniforms.current.uTime.value += 0.01
   })
 
   return (
     <mesh position={[0, 0, 0]}>
 
-      <sphereGeometry args={[1, 128, 64]} />
+      <sphereGeometry args={[2, 128, 64]} />
       <shaderMaterial
         depthWrite={false}
         vertexColors
