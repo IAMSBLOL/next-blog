@@ -13,7 +13,7 @@ const SetCnavs = () => {
 
   useEffect(() => {
     state.camera.lookAt(0, 0, -1)
-    state.camera.position.set(0, 0, 5)
+    state.camera.position.set(0, 10, 5)
   }, [state])
 
   return null
@@ -64,6 +64,12 @@ const HomePage = () => {
       >
         <SetCnavs />
         <ambientLight color={new Color('#FFF')} />
+        <pointLight
+          color={new Color('#23beff')} position={[0, 0, 5]} castShadow
+          shadow-camera-far={10000}
+          shadow-camera-near={1}
+          shadow-mapSize={2048}
+        />
 
         <OrbitControls
           enableDamping
