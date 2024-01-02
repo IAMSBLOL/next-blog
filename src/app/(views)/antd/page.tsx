@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+
 import { getMarkdowns } from '@/src/app/api/blog/_markdown'
 
 const HomePage = async () => {
@@ -7,10 +7,7 @@ const HomePage = async () => {
   return (
 
     <div className='App container m-auto'>
-      <Button
-        type='primary'
-      >Button
-      </Button>
+
       {
         files
       }

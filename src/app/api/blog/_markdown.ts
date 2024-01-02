@@ -7,7 +7,7 @@ const blogFolder = 'src/app/mdx/[slug]/'
 export async function getMarkdowns () {
   try {
     const files = await promisify(readdir)(blogFolder)
-
+    console.log(files)
     return files.filter((item:string) => /.md$/g.test(item))
   } catch (e) {
 
