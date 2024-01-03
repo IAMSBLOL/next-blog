@@ -7,7 +7,8 @@ import {
   Scene,
   TextureLoader,
   DirectionalLight,
-  SRGBColorSpace
+  SRGBColorSpace,
+  Texture
 } from 'three'
 import { throttle } from 'lodash'
 import { useGetWindowInfo } from '@/utils/index'
@@ -19,12 +20,40 @@ import './galaxy.scss'
 
 type Props = {
   height: number,
-
+  setInit: React.Dispatch<React.SetStateAction<boolean>>,
+  init: boolean
 }
 const { parent, tube } = initLine()
 
+// 初始化一个加载器
+const loader = new TextureLoader();
+
+const getTexture = (path: string): Promise<Texture> => new Promise(function (resolve, reject) {
+  // 加载一个资源
+  loader.load(
+    // 资源URL
+    path,
+
+    // onLoad回调
+    function (texture) {
+      // in this example we create the material when the texture is loaded
+      texture.colorSpace = SRGBColorSpace
+      resolve(texture)
+    },
+
+    // 目前暂不支持onProgress的回调
+    undefined,
+
+    // onError回调
+    function (err) {
+      console.error('An error happened.', err);
+      reject(err)
+    }
+  );
+})
+
 const WorkingTimeline = (props: Props): JSX.Element => {
-  const { height: scrollTotal } = props
+  const { height: scrollTotal, setInit, init } = props
 
   // const dispatch = useDispatch()
   const canvasIns = useRef<HTMLCanvasElement | null>(null)
@@ -38,8 +67,48 @@ const WorkingTimeline = (props: Props): JSX.Element => {
 
   const { width, height } = useGetWindowInfo()
 
+  const bgImg = useRef<Texture|null>(null)
+  const spaceImg = useRef<Texture | null>(null)
+
+  // 加载资源
+  useEffect(() => {
+    const init = async () => {
+      return new Promise(function (resolve) {
+        const getTextureFn = async () => {
+          bgImg.current = await getTexture('/images/bg815.png')
+          spaceImg.current = await getTexture('/images/space.jpg')
+        }
+        const fn = async () => {
+          await getTextureFn()
+          resolve(true)
+        }
+        fn()
+      })
+      console.log(7878)
+    }
+
+    const start = async () => {
+      await Promise.allSettled([
+        init(),
+        new Promise(function (resolve) {
+          const timerFn = setTimeout(() => {
+            clearTimeout(timerFn)
+            resolve(true)
+          }, 2500);
+        }),
+
+      ])
+
+      setInit(true)
+    }
+    start()
+  }, [setInit])
+
   // useScrollTrigger(scrollTotal)
   useEffect(() => {
+    if (!init) {
+      return
+    }
     if (width === 0) {
       return
     }
@@ -65,9 +134,10 @@ const WorkingTimeline = (props: Props): JSX.Element => {
 
       // glRender.current.useLegacyLights = true
       scene.current.add(parent)
-      const bgImg = new TextureLoader().load('/images/bg815.png')
-      bgImg.colorSpace = SRGBColorSpace
-      scene.current.background = bgImg
+      // const bgImg = new TextureLoader().load('/images/bg815.png')
+
+      // bgImg.colorSpace = SRGBColorSpace
+      scene.current.background = bgImg.current
       const linght = new DirectionalLight(0xffffff, Math.PI * 0)
       scene.current.add(linght)
       const renderCvs = () => {
@@ -85,7 +155,7 @@ const WorkingTimeline = (props: Props): JSX.Element => {
       }
       rendera()
     }
-  }, [width, height])
+  }, [width, height, init])
 
   const scrollPosition = useCallback(
     (scrollAmount: number) => {
@@ -106,6 +176,9 @@ const WorkingTimeline = (props: Props): JSX.Element => {
   )
 
   useEffect(() => {
+    if (!init) {
+      return
+    }
     if (scrollTotal === 0 || width === 0) {
       return
     }
@@ -135,7 +208,7 @@ const WorkingTimeline = (props: Props): JSX.Element => {
       const scroll_y = window.scrollY / scrollTotal;
       scrollPosition(scroll_y);
     });
-  }, [scrollPosition, scrollTotal, width, height])
+  }, [scrollPosition, scrollTotal, width, height, init])
   return (
     <div className='galaxy'>
       <canvas ref={canvasIns} className='canvas' />

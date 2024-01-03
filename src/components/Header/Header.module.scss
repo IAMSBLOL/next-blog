@@ -1,7 +1,23 @@
 .Header {
   font-family: "gdh_Regular";
   font-weight: 500;
-  font-size: 25px;
   color: #fff;
   position: fixed;
+  z-index: 999;
+
+  :global {
+    .router-wrap {
+      h3 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        cursor: pointer;
+        opacity: 0.4;
+
+        &:hover {
+          opacity: 1;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
 }

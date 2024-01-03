@@ -9,7 +9,7 @@ import galaxyFragmentShader from './glsl/fragment.glsl'
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as THREE from 'three'
 import { throttle } from 'lodash'
-
+import gsap from 'gsap'
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import './space.scss'
 // const uniforms = {
@@ -28,6 +28,11 @@ parameters.randomnessPower = 5
 parameters.insideColor = '#ff6030'
 parameters.outsideColor = '#1b3984'
 
+// interface Props {
+
+//   init: boolean
+// }
+
 const Space = (): JSX.Element => {
   const canvasIns = useRef<HTMLCanvasElement | null>(null)
   const glRender = useRef<THREE.WebGLRenderer | null>(null)
@@ -35,6 +40,8 @@ const Space = (): JSX.Element => {
   const scene = useRef<THREE.Scene>(new Scene())
   const canvasWrap = useRef<HTMLDivElement | null>(null)
   const lastX = useRef(0)
+
+  const pos = useRef({ z: 10 })
 
   useEffect(() => {
     if (!canvasWrap.current) {
@@ -71,8 +78,7 @@ const Space = (): JSX.Element => {
           120
         )
 
-        camera.current.position.set(0, 3, 5);
-        camera.current.lookAt(new THREE.Vector3(0, 0, -1));
+        // camera.current.position.set(0, 3, pos.current.z);
 
         // const material = new THREE.ShaderMaterial({
 
@@ -159,7 +165,6 @@ const Space = (): JSX.Element => {
         scene.current.add(points);
 
         window.addEventListener('mousemove', (event: MouseEvent) => {
-          console.log(event, 'event')
           const x = event.x
           lastX.current = x / window.innerWidth
         })
@@ -178,11 +183,16 @@ const Space = (): JSX.Element => {
 
           material.uniforms.uTime.value = elapsedTime
           material.uniforms.stronger.value = lastX.current
-          camera.current?.position.set(0, 3 - lastX.current * 0.2, 5);
+          camera.current?.position.set(0, 3 - lastX.current * 0.2, pos.current.z);
+
+          camera.current?.lookAt(new THREE.Vector3(0, 0, -1));
           requestAnimationFrame(rendera)
         }
 
         rendera()
+        const tl = gsap.timeline();
+
+        tl.fromTo(pos.current, { z: 10 }, { z: 5, duration: 2 });
       }
     }
   }, [])
