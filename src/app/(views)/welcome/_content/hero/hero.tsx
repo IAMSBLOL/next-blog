@@ -1,6 +1,6 @@
-import gsap from 'gsap'
-import { useEffect, useMemo } from 'react'
-import { TextPlugin } from 'gsap/TextPlugin'
+// import gsap from 'gsap'
+import { useMemo } from 'react'
+// import { TextPlugin } from 'gsap/TextPlugin'
 import './hero.css'
 
 type Props = {
@@ -10,14 +10,14 @@ type Props = {
 
 const Hero = (props: Props) => {
   const { init } = props
-  useEffect(() => {
-    if (init) {
-      gsap.registerPlugin(TextPlugin)
-      const tl = gsap.timeline();
+  // useEffect(() => {
+  //   if (init) {
+  //     gsap.registerPlugin(TextPlugin)
+  //     const tl = gsap.timeline();
 
-      tl.to('.btn-text', { text: '个人简历', duration: 1 });
-    }
-  }, [init])
+  //     tl.to('.btn-text', { text: '个人简历', duration: 1 });
+  //   }
+  // }, [init])
 
   const MemoBtn = useMemo(() => {
     if (init) {
