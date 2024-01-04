@@ -13,7 +13,7 @@ const Welcome = () => {
 
   const divRef = useRef<HTMLDivElement | null>(null)
 
-  const [init, setInit] = useState(false)
+  // const [init, setInit] = useState(false)
 
   const Galaxy = dynamic(() => import('./_background/Galaxy'), {
 
@@ -31,17 +31,12 @@ const Welcome = () => {
   useEffect(() => {
     gsap.registerPlugin(TextPlugin)
     const tl = gsap.timeline();
-    if (init) {
-      tl.to('.Welcome-content', { backgroundColor: 'rgba(0, 0, 0, 0.7)', duration: 2 });
-    }
-  }, [init])
+    tl.to('.Welcome-content', { backgroundColor: 'rgba(0, 0, 0, 0.7)', duration: 2 });
+  }, [])
 
-  const HeroMemo = useMemo(() => {
-    return <Hero init={init} />
-  }, [init])
   return (
     <>
-      <Galaxy height={height} init={init} setInit={setInit} />
+      <Galaxy height={height} />
       <div className={`${styles.welcome} Welcome-content`} ref={divRef}>
 
         <Header />
@@ -50,9 +45,7 @@ const Welcome = () => {
           <Space />
         </div>
 
-        {
-          HeroMemo
-        }
+        <Hero />
 
       </div>
     </>

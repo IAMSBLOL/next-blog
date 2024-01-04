@@ -1,15 +1,15 @@
 // import gsap from 'gsap'
-import { useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 // import { TextPlugin } from 'gsap/TextPlugin'
 import './hero.css'
 
-type Props = {
+// type Props = {
 
-  init: boolean
-}
+//   init: boolean
+// }
 
-const Hero = (props: Props) => {
-  const { init } = props
+const Hero = () => {
+  // const { init } = props
   // useEffect(() => {
   //   if (init) {
   //     gsap.registerPlugin(TextPlugin)
@@ -18,6 +18,14 @@ const Hero = (props: Props) => {
   //     tl.to('.btn-text', { text: '个人简历', duration: 1 });
   //   }
   // }, [init])
+  const [init, setInit] = useState(false)
+
+  useEffect(() => {
+    const timerFn = setTimeout(() => {
+      clearTimeout(timerFn)
+      setInit(true)
+    }, 2000);
+  }, [])
 
   const MemoBtn = useMemo(() => {
     if (init) {
