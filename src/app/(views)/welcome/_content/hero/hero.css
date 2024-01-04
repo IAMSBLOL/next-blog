@@ -188,3 +188,18 @@ button:hover .text,
 button.active .text {
   animation: text 0.66s ease-in 1 both;
 }
+
+.loading .text {
+  animation: text 0.66s ease-in infinite both !important;
+}
+
+.loading .shimmer::before,
+.loading .shimmer::after,
+.loading .shimmer::before,
+.loading .shimmer::after {
+  animation: shine 1.2s ease-in infinite forwards !important;
+}
+
+.loading .shimmer {
+  animation: shimmer 1s linear infinite both !important;
+}

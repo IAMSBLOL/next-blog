@@ -33,29 +33,16 @@ const Welcome = () => {
     const tl = gsap.timeline();
     if (init) {
       tl.to('.Welcome-content', { backgroundColor: 'rgba(0, 0, 0, 0.7)', duration: 2 });
-    } else {
-      tl.to('.wait-p1', { text: '万里关山如咫尺', duration: 1 });
-      tl.to('.wait-p2', { text: '女牀唯待凤归巢', duration: 1 });
-      tl.to('.wait-p3', { text: '静候资源加载', duration: 0.5 });
     }
   }, [init])
 
   const HeroMemo = useMemo(() => {
-    if (!init) {
-      return (
-        <div className='text-fuchsia-50 wait-tips-wrap md:text-6xl sm:text-lg'>
-          <p className='wait-p1 w-5' />
-          <p className='wait-p2 w-5' />
-          <p className='wait-p3 w-5 text-2xl' />
-        </div>
-      )
-    }
-    return <Hero />
+    return <Hero init={init} />
   }, [init])
   return (
     <>
       <Galaxy height={height} init={init} setInit={setInit} />
-      <div className={`${styles.welcome} Welcome-content @container`} ref={divRef}>
+      <div className={`${styles.welcome} Welcome-content`} ref={divRef}>
 
         <Header />
 

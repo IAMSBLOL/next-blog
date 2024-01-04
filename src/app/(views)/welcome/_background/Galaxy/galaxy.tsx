@@ -72,24 +72,19 @@ const WorkingTimeline = (props: Props): JSX.Element => {
 
   // 加载资源
   useEffect(() => {
-    const init = async () => {
-      return new Promise(function (resolve) {
-        const getTextureFn = async () => {
-          bgImg.current = await getTexture('/images/bg815.png')
-          spaceImg.current = await getTexture('/images/space.jpg')
-        }
-        const fn = async () => {
-          await getTextureFn()
-          resolve(true)
-        }
-        fn()
-      })
-      console.log(7878)
-    }
-
     const start = async () => {
       await Promise.allSettled([
-        init(),
+        new Promise(function (resolve) {
+          const getTextureFn = async () => {
+            bgImg.current = await getTexture('/images/bg815.png')
+            spaceImg.current = await getTexture('/images/space.jpg')
+          }
+          const fn = async () => {
+            await getTextureFn()
+            resolve(true)
+          }
+          fn()
+        }),
         new Promise(function (resolve) {
           const timerFn = setTimeout(() => {
             clearTimeout(timerFn)

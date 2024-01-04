@@ -22,7 +22,7 @@ const Welcome = () => {
   }
   return (
 
-    <div className={`${styles.Header} h-12 flex items-center justify-between px-4 md:px-10  w-full pt-1`}>
+    <div className={`${styles.Header} h-12 flex items-center justify-between xs:px-4 md:px-10  w-full pt-1`}>
       <div className='flex items-center justify-between'>
         <TranfomerSvg className='tranfomerSvg' />
         <p className='logo_title pl-4 md:text-xl xs:text-sm'>The Martrix</p>
