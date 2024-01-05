@@ -133,7 +133,7 @@ const WorkingTimeline = (props: Props): JSX.Element => {
 
       // glRender.current.useLegacyLights = true
       scene.current.add(parent)
-      const bgImg = new TextureLoader().load('/images/bg815.png')
+      const bgImg = new TextureLoader().load('/images/bg815.jpg')
 
       bgImg.colorSpace = SRGBColorSpace
       scene.current.background = bgImg

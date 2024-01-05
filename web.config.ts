@@ -1,0 +1,6 @@
+const WELCOME = {
+
+}
+export {
+  WELCOME
+}

@@ -41,7 +41,7 @@ const Welcome = () => {
 
         <Header />
 
-        <div className='absolute w-full h-full md:left-64 sm:left-0'>
+        <div className='absolute w-full h-full lg:left-80 sm:left-0'>
           <Space />
         </div>
 

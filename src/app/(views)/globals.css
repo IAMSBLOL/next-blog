@@ -20,7 +20,7 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
-@font-face {
+/* @font-face {
   font-family: "思源宋体复古";
   src:
     url("/fonts/KIWvIS31U4SBO3iBH4t2R.woff2") format("woff2"),
@@ -35,7 +35,7 @@ body {
     url("/fonts/h063u7qmr_cX1KTAhSwLF.woff2") format("woff2"),
     url("/fonts/h063u7qmr_cX1KTAhSwLF.woff") format("woff");
   font-display: swap;
-}
+} */
 
 @font-face {
   font-family: "gdh_Regular";

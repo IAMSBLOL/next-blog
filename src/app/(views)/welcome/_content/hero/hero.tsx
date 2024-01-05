@@ -45,15 +45,16 @@ const Hero = () => {
   }, [init])
 
   return (
-    <div className='w-full h-full flex xs:items-start xs:p-20 sm:items-center justify-center absolute z-10 text-fuchsia-50'>
+    <div className='w-full h-full flex xs:items-start xs:p-20 sm:p-40 justify-center absolute z-10 text-gray-400'>
       <div className='flex-1 flex items-center justify-between flex-col pt-20'>
-        <h1 className='welcome-text md:text-8xl xs:text-6xl'>关山月</h1>
-        <div className='xs:mb-20 sm:mb-40'>
-          <p className='xs:text-base text-xl tracking-widest'>
+        <h1 className='welcome-text md:text-8xl xs:text-6xl whitespace-nowrap mb-4'>M78 星云</h1>
+        <div className='mb-20'>
+          <p className='xs:text-base md:text-2xl tracking-widest text-center'>
             Welcome to The Matrix
           </p>
 
         </div>
+
         {
           MemoBtn
         }
