@@ -111,7 +111,6 @@ const WorkingTimeline = (props: Props): JSX.Element => {
       return
     }
     if (canvasIns.current) {
-      console.log(window.devicePixelRatio)
       const { parent, tube } = initLine()
       camera.current = new PerspectiveCamera(
         90,
@@ -133,10 +132,7 @@ const WorkingTimeline = (props: Props): JSX.Element => {
 
       // glRender.current.useLegacyLights = true
       scene.current.add(parent)
-      const bgImg = new TextureLoader().load('/images/bg815.jpg')
 
-      bgImg.colorSpace = SRGBColorSpace
-      scene.current.background = bgImg
       const linght = new DirectionalLight(0xffffff, Math.PI * 0)
       scene.current.add(linght)
 
@@ -170,6 +166,10 @@ const WorkingTimeline = (props: Props): JSX.Element => {
         requestAnimationFrame(rendera)
       }
       rendera()
+      const bgImg = new TextureLoader().load('/images/bg815.jpg')
+
+      bgImg.colorSpace = SRGBColorSpace
+      scene.current.background = bgImg
     }
   }, [width, height])
 

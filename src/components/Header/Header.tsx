@@ -29,7 +29,7 @@ const Welcome = () => {
       </div>
 
       <div className='flex items-center justify-between'>
-        <div className='grid grid-cols-1 grid-rows-1 mr-6 router-wrap text-sm md:text-xl lg:text-2xl'>
+        <div className='grid grid-cols-1 grid-rows-1 mr-6 router-wrap text-sm md:text-base'>
           <h3 onClick={() => handlePushRouter('/myWriting')}>
             拙笔
           </h3>

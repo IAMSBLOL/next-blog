@@ -21,6 +21,7 @@ import {
 import * as Curves from 'three/examples/jsm/curves/CurveExtras.js';
 
 export const initLine = () => {
+  console.log(2424)
   const sampleClosedSpline = new CatmullRomCurve3([
     new Vector3(0, 0, -140),
     new Vector3(140, 0, 0),
