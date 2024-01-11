@@ -81,7 +81,7 @@
   }
 }
 
-button {
+.wel_button {
   color: var(--bg);
   font-weight: 600;
   /*     background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5); */
@@ -97,8 +97,8 @@ button {
   transition: all var(--spring-duration) var(--spring-easing);
 }
 
-button:hover:not(:active),
-button.active {
+.wel_button:hover:not(:active),
+.wel_button.active {
   transition-duration: calc(var(--spring-duration) * 0.5);
   scale: 1.2;
   box-shadow:
@@ -106,7 +106,7 @@ button.active {
     inset 0 0 0 transparent;
 }
 
-button:active {
+.wel_button:active {
   scale: 1.1;
   transition-duration: calc(var(--spring-duration) * 0.5);
 }
@@ -132,10 +132,10 @@ button:active {
   animation: shimmer 1s linear infinite both;
 }
 
-button:hover .shimmer::before,
-button:hover .shimmer::after,
-button.active .shimmer::before,
-button.active .shimmer::after {
+.wel_button:hover .shimmer::before,
+.wel_button:hover .shimmer::after,
+.wel_button.active .shimmer::before,
+.wel_button.active .shimmer::after {
   opacity: 1;
   animation: shine 1.2s ease-in 1 forwards;
 }
@@ -169,7 +169,7 @@ button.active .shimmer::after {
   z-index: 2;
 }
 
-button .text {
+.wel_button .text {
   background-clip: text;
   background-color: var(--bg);
   background-image: linear-gradient(
@@ -184,8 +184,8 @@ button .text {
   background-position: center 200%;
 }
 
-button:hover .text,
-button.active .text {
+.wel_button:hover .text,
+.wel_button.active .text {
   animation: text 0.66s ease-in 1 both;
 }
 

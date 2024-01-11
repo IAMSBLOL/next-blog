@@ -71,12 +71,12 @@ export const useAnimations = (setIsModalOpen: React.Dispatch<React.SetStateActio
 
     tl.to('.skills_question_2', {
       text: '说人话。😡',
-      duration: 0.2
+      duration: 0.5
     })
 
     tl.to('.skills_text_3', {
       text: '公司倒闭，老板带着小姨子和我的血汗钱跑路了。😭😭😭',
-      duration: 1,
+      duration: 2,
       onComplete: () => {
         setIsModalOpen(true)
       }

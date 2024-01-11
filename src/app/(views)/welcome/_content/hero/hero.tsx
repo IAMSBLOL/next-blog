@@ -32,7 +32,7 @@ const Hero = () => {
     if (init) {
       return (
         <Link href='/resume' target='_blank'>
-          <button className=''>
+          <button className='wel_button'>
             <span className='text text-fuchsia-50 px-4 text-base'>个人简历</span>
             <span className='shimmer' />
           </button>
@@ -40,7 +40,7 @@ const Hero = () => {
       )
     }
     return (
-      <button className='loading'>
+      <button className='wel_button loading'>
         <span className='text text-fuchsia-50 px-4 text-xl'>资源加载中</span>
         <span className='shimmer' />
       </button>
