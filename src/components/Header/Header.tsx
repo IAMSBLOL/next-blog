@@ -40,7 +40,7 @@ const Welcome = () => {
 
         </div>
         <div className='flex items-center justify-between opacity-60'>
-          <a href='https://github.com/IAMSBLOL/resume' className='pr-4' target='_blank' rel='noreferrer'><GithubOutlined /></a>
+          <a href='https://github.com/IAMSBLOL/next-blog' className='pr-4' target='_blank' rel='noreferrer'><GithubOutlined /></a>
           <a href='https://www.zhihu.com/people/zhong-guo-meng-77/posts' target='_blank' rel='noreferrer'><ZhihuOutlined /></a>
         </div>
 
