@@ -1,0 +1,28 @@
+.skills {
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+}
+
+.skills_wrap {
+  transform: scale(0);
+}
+
+.img_wrap {
+  border: 2px solid #ccc;
+   box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;  
+}
+
+.skill_list_item {
+  transform: translateY(-1000px);
+  opacity: 0;
+ text-shadow: #df8f81;
+}
+
+.chat_box {
+  @apply px-4 py-2 text-zinc-600 mb-5 xs:text-sm sm:text-base
+}

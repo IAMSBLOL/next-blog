@@ -22,9 +22,9 @@ export default async function Home ({ params }: { params: { slug: string } }) {
   })
 
   return (
-    <div className={`m-auto container ${styles['mdx-page-wrap']}`}>
+    <div className={`m-auto pt-14 container ${styles['mdx-page-wrap']}`}>
       <DynamicMDX />
-
     </div>
+
   )
 }

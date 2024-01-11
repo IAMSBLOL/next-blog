@@ -1,9 +1,14 @@
 import styles from './writingItem.module.scss'
-const WritingItem = () => {
+import Link from 'next/link'
+const WritingItem = (props:any) => {
+  const { data } = props
   return (
-    <div className={styles.writingItem}>
-      writingItem
-    </div>
+    <Link href={'/mdx' + data.path} target='_blank'>
+      <div className={styles.writingItem}>
+        {props.data.title}
+      </div>
+    </Link>
+
   )
 }
 

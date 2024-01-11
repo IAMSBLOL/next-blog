@@ -1,0 +1,36 @@
+.seal {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  background-color: transparent;
+
+  .seal_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    position: relative;
+
+    .seal_content {
+      border: 3px solid #fff;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .seal_wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4.5rem;
+    }
+  }
+}

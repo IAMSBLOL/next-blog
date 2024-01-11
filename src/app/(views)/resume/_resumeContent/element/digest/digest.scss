@@ -1,0 +1,18 @@
+.digest {
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+
+  .digest_text_1 {
+    transform: translateX(-1500px);
+  }
+
+    .digest_text_2 {
+    transform: translateX(1500px);
+  }
+}
