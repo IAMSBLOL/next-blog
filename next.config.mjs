@@ -32,6 +32,7 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // distDir: 'build',
+  reactStrictMode: false,
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
