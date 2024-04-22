@@ -8,6 +8,8 @@ import TranfomerSvg from '@/assets/icons/tranfomer.svg'
 import styles from './Header.module.scss'
 // import './Header.css'
 
+console.log('Header')
+
 const Welcome = () => {
   const router = useRouter()
 
@@ -16,7 +18,7 @@ const Welcome = () => {
     const tl = gsap.timeline();
 
     tl.to('.tranfomerSvg path', { fill: 'red', duration: 2 });
-  }, [])
+  }, [router])
 
   const handlePushRouter = (path:string) => {
     router.push(path)
