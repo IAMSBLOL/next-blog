@@ -1,9 +1,9 @@
 {
-  "*.js": [
+  "*.(tsx|js|ts|jsx)": [
     "eslint --fix",
     "git add"
   ],
-  "*.css": [
+  "*.(css|less)": [
     "stylelint --fix",
     "git add"
   ]
