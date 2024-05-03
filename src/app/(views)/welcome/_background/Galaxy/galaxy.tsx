@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 
 import {
   WebGLRenderer,
@@ -7,7 +7,7 @@ import {
   Scene,
   TextureLoader,
   DirectionalLight,
-  SRGBColorSpace,
+  SRGBColorSpace
   // Texture
 } from 'three'
 import { throttle } from 'lodash'
@@ -18,7 +18,7 @@ import { initLine } from './hooks/useInitLine'
 
 import './galaxy.scss'
 
-type Props = {
+type Properties = {
   height: number,
   // setInit: React.Dispatch<React.SetStateAction<boolean>>,
   // init: boolean
@@ -51,8 +51,8 @@ type Props = {
 //   );
 // })
 
-const WorkingTimeline = (props: Props): JSX.Element => {
-  const { height: scrollTotal } = props
+const WorkingTimeline = (properties: Properties): JSX.Element => {
+  const { height: scrollTotal } = properties
 
   // const dispatch = useDispatch()
   const canvasIns = useRef<HTMLCanvasElement | null>(null)
@@ -123,9 +123,9 @@ const WorkingTimeline = (props: Props): JSX.Element => {
         antialias: true,
         canvas: canvasIns.current,
 
-        alpha: true,
+        alpha: true
 
-      });
+      })
 
       glRender.current.setPixelRatio(window.devicePixelRatio)
       glRender.current.setSize(width, height)
@@ -133,30 +133,30 @@ const WorkingTimeline = (props: Props): JSX.Element => {
       // glRender.current.useLegacyLights = true
       scene.current.add(parent)
 
-      const linght = new DirectionalLight(0xffffff, Math.PI * 0)
+      const linght = new DirectionalLight(0xFF_FF_FF, 0)
       scene.current.add(linght)
 
       const scrollPosition = (scrollAmount: number) => {
         // https:// codepen.io/Lighty/pen/GRqxvZV
 
-        const pos = tube.geometry.parameters.path.getPointAt(scrollAmount);
-        const pos2 = tube.geometry.parameters.path.getPointAt(scrollAmount + 0.00001);
+        const pos = tube.geometry.parameters.path.getPointAt(scrollAmount)
+        const pos2 = tube.geometry.parameters.path.getPointAt(scrollAmount + 0.000_01)
         // console.log(pos, 'pos')
         // console.log(pos2, 'pos2')
         currentY.current = scrollAmount
 
         if (camera.current) {
-          camera.current.position.copy(pos);
-          camera.current.lookAt(pos2);
-          camera.current.updateProjectionMatrix();
+          camera.current.position.copy(pos)
+          camera.current.lookAt(pos2)
+          camera.current.updateProjectionMatrix()
         }
-      };
+      }
       scrollPosition(0)
       const renderCvs = () => {
         if (tube.material.map) {
           // console.log(tube.material.map.offset.y)
-          tube.material.map.offset.x += 0.00005;
-          tube.material.map.offset.y += 0.00005;
+          tube.material.map.offset.x += 0.000_05
+          tube.material.map.offset.y += 0.000_05
         }
         glRender.current?.render(scene.current, camera.current as PerspectiveCamera)
       }
@@ -182,24 +182,24 @@ const WorkingTimeline = (props: Props): JSX.Element => {
     }
     // scrollPosition(0);
 
-    const resizeFn = () => {
+    const resizeFunction = () => {
       // update sizes
 
       // update camera
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const width = window.innerWidth
+      const height = window.innerHeight
       if (camera.current) {
-        camera.current.aspect = width / height;
-        camera.current.updateProjectionMatrix();
+        camera.current.aspect = width / height
+        camera.current.updateProjectionMatrix()
       }
 
       // update renderer
-      glRender.current?.setSize(width, height);
-      glRender.current?.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      glRender.current?.setSize(width, height)
+      glRender.current?.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     }
-    const throttleResizeFn = throttle(resizeFn, 100)
+    const throttleResizeFunction = throttle(resizeFunction, 100)
 
-    window.addEventListener('resize', throttleResizeFn);
+    window.addEventListener('resize', throttleResizeFunction)
 
     // window.addEventListener('scroll', () => {
     //   console.log(120)

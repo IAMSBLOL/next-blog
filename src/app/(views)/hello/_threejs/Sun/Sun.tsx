@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
 import { Canvas, useThree, useFrame } from '@react-three/fiber'
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react'
 import { AdditiveBlending, Color } from 'three'
 import { OrbitControls, useTexture } from '@react-three/drei'
 
-import galaxyVertexShader from '../sunGlsl/vertex.glsl';
-import galaxyFragmentShader from '../sunGlsl/fragment.glsl';
+import galaxyVertexShader from '../sunGlsl/vertex.glsl'
+import galaxyFragmentShader from '../sunGlsl/fragment.glsl'
 
 const SetCnavs = () => {
   const state = useThree()
@@ -15,19 +15,17 @@ const SetCnavs = () => {
     state.camera.lookAt(0, 0, -1)
     state.camera.position.set(0, 10, 5)
   }, [state])
-
-  return null
 }
 
 const MeshCus = () => {
   const colorMap = useTexture('./sun.png')
 
   const uniforms = useRef({
-    uTime: { value: 0.0 },
+    uTime: { value: 0 },
     amplitude: { value: 0.5 },
-    intensity: { value: 2.0 },
+    intensity: { value: 2 },
     uTexture: { value: colorMap },
-    glowIntensity: { value: 0.5 }, // 辉光强度
+    glowIntensity: { value: 0.5 } // 辉光强度
   })
   useFrame(() => {
     uniforms.current.uTime.value += 0.01
@@ -66,7 +64,7 @@ const HomePage = () => {
         <ambientLight color={new Color('#FFF')} />
         <pointLight
           color={new Color('#23beff')} position={[0, 0, 5]} castShadow
-          shadow-camera-far={10000}
+          shadow-camera-far={10_000}
           shadow-camera-near={1}
           shadow-mapSize={2048}
         />
@@ -80,7 +78,7 @@ const HomePage = () => {
         <MeshCus />
       </Canvas>
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

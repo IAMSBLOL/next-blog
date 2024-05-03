@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 import gsap from 'gsap'
 import { TextPlugin } from 'gsap/TextPlugin'
 import { useRouter } from 'next/navigation'
@@ -8,17 +8,15 @@ import TranfomerSvg from '@/assets/icons/tranfomer.svg'
 import styles from './Header.module.scss'
 // import './Header.css'
 
-console.log('Header')
-
 const Welcome = () => {
   const router = useRouter()
 
   useEffect(() => {
     gsap.registerPlugin(TextPlugin)
-    const tl = gsap.timeline();
+    const tl = gsap.timeline()
 
-    tl.to('.tranfomerSvg path', { fill: 'red', duration: 2 });
-  }, [router])
+    tl.to('.tranfomerSvg path', { fill: 'red', duration: 2 })
+  }, [])
 
   const handlePushRouter = (path:string) => {
     router.push(path)
@@ -42,13 +40,13 @@ const Welcome = () => {
 
         </div>
         <div className='flex items-center justify-between opacity-60'>
-          <a href='https://github.com/IAMSBLOL/next-blog' className='pr-4' target='_blank' rel='noreferrer'><GithubOutlined /></a>
+          <a href='https://github.com/IAMSBLOL/next-blog' className='pr-4' target='_blank' rel='noreferrer' onClick={() => {}} onDragOver={() => {}}><GithubOutlined /></a>
           <a href='https://www.zhihu.com/people/zhong-guo-meng-77/posts' target='_blank' rel='noreferrer'><ZhihuOutlined /></a>
         </div>
 
       </div>
     </div>
   )
-};
+}
 
-export default Welcome;
+export default Welcome

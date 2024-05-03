@@ -10,7 +10,7 @@ export async function getMarkdowns () {
     console.log(files)
     return files.filter((item:string) => /.md$/g.test(item))
   } catch (e) {
-
+    //
   }
 }
 
@@ -18,7 +18,7 @@ export async function getMarkdownsExist (file:string) {
   try {
     const path = resolve(blogFolder, `./${file}`)
 
-    const isExist:any = await promisify(access)(path, constants.F_OK)
+    const isExist:unknown = await promisify(access)(path, constants.F_OK)
 
     if (isExist) {
       return false

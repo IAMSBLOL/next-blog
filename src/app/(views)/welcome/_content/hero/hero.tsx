@@ -22,13 +22,13 @@ const Hero = () => {
   const [init, setInit] = useState(false)
 
   useEffect(() => {
-    const timerFn = setTimeout(() => {
-      clearTimeout(timerFn)
+    const timerFunction = setTimeout(() => {
+      clearTimeout(timerFunction)
       setInit(true)
-    }, 1000);
+    }, 1000)
   }, [])
 
-  const MemoBtn = useMemo(() => {
+  const MemoButton = useMemo(() => {
     if (init) {
       return (
         <Link href='/resume' target='_blank'>
@@ -61,7 +61,7 @@ const Hero = () => {
         </div>
 
         {
-          MemoBtn
+          MemoButton
         }
       </div>
       <div className='flex-1 xs:hidden md:block ' />

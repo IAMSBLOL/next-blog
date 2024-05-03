@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import Sun from './_threejs/Sun'
 
@@ -7,7 +7,7 @@ const Home = function Home () {
     <div className='w-full h-[100vh] bg-black relative'>
       <Sun />
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
